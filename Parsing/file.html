@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/fileUp.js"></script>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/fileStyle.css">
+</head>
+<body>
+<div class="container">
+ 	 
+ 	 <h1>파일을 선택하십시오</h1>
+ 	 
+ 	 <div class="file-upload btn btn-primary">
+     
+      	<span>BROWSE</span>
+     	<input type="file" name="FileAttachment" id="FileAttachment" class="upload" onchange="getFilePath(this)" />
+	
+	</div>
+ 		<input type="text" id="fileuploadurl" readonly placeholder="Maximum file size is 1GB">
+</div>
+<div class = "submit">
+	<input type="button" name="submit" value="전송" id = "submitbtn">
+</div>
+</body>
+</html>

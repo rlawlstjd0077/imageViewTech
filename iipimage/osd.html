@@ -1,0 +1,73 @@
+<html>
+<head>
+ <meta charset="utf-8" />
+ <meta name="DC.creator" content="Ruven Pillay &lt;ruven@users.sourceforge.netm&gt;"/>
+ <meta name="DC.title" content="IIPImage with OpenSeaDragon"/>
+ <meta name="DC.subject" content="IIPImage; Visualization; OpenSeaDragon; High Resolution; Deepzoom"/>
+ <meta name="DC.description" content="IIPImage Demo featuring OpenSeaDragon and Deepzoom"/>
+ <meta name="DC.rights" content="Copyright &copy; 2015 Ruven Pillay"/>
+ <meta name="DC.source" content="http://iipimage.sourceforge.net"/>
+ <title>IIPImage with OpenSeaDragon</title>
+ <style type="text/css">
+  body{ margin: 0; padding: 0; background: black; color: #fff; font-family: Verdana, sans-serif }
+  div#openseadragon{ width: 100%; height: 100%; position:absolute; }
+  a{ color: #eee; }
+  div#caption{ bottom: 0; align: right; position: absolute; margin: 0.66em; background: transparent; padding: 0.5em; width: 66% }
+ </style>
+<!--
+ <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+ <script src="openseadragon.min.js"></script>
+ <script src="javascript/osd-iip-connector.js"></script>
+-->
+ <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+ <script src="js/openseadragon.min.js"></script>
+ <script src="js/openseadragon-iip-connector.js"></script>
+</head>
+<body>
+
+<div id="openseadragon"></div>
+<div id="caption">
+<a href="http://iipimage.sourceforge.net">
+<img src="images/iip.32x32.png" style="float:left; margin-right:5px"/>IIPImage</a> 
+serving Deepzoom tiles to <a href="https://openseadragon.github.io/" target="_blank">OpenSeaDragon</a>:<br/>
+29566x14321 pixel <a href="http://hubblesite.org/newscenter/archive/releases/2007/16/" target="_blank">Hubble telescope image</a> 
+of star birth in the Carina Nebula
+<div>
+
+<script type="text/javascript">
+    var viewer = OpenSeadragon({
+        id: "openseadragon",
+  	showNavigator: true,
+        prefixUrl: "images/",
+	preserveViewport: true,
+	visibilityRatio:    1,
+	minZoomLevel:       1,
+	defaultZoomLevel:   1,
+	sequenceMode:       true,
+/*
+        tileSources: {
+		type: "image",
+		//url: "/iipsrv/iipsrv.fcgi?DeepZoom=image2.tiff"
+		//url: "/iipsrv/iipsrv.fcgi?Zoomify=image2.tiff"
+		url: "/iipsrv/iipsrv.fcgi?FIF=image2.tiff"
+	}
+*/
+	tileSources: [{
+		"@context": "http://iiif.io/api/image/2/context.json",
+	        //"@id": "http://libimages.princeton.edu/loris2/pudl0001%2F4609321%2Fs42%2F00000001.jp2",
+		"@id": "/iipsrv/iipsrv.fcgi?IIIF=image2.tiff"	,
+		"height": 5685,
+		"width": 5567,
+		"profile": [ "http://iiif.io/api/image/2/level2.json" ],
+		"protocol": "http://iiif.io/api/image",
+		"tiles": [{ "scaleFactors": [ 1, 2, 4, 8, 16, 32 ], "width": 1024 }]
+	}]
+
+    });
+</script>
+
+<!--
+<img src="/iipsrv/iipsrv.fcgi?FIF=image2.tiff" class="osd-iip another_class"/>
+-->
+</body>
+</html>
